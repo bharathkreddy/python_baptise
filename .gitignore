@@ -3,3 +3,5 @@ Pipfile.lock
 poetry.lock
 Pipfile
 .DS_Store
+.idea/
+
