@@ -286,3 +286,38 @@ except Exception as ex:
 
 # any parser failure gives ParserError.
 print(parser.parse(s, fuzzy_with_tokens=True))
+
+
+#%%
+# ZONEINFO LIBRARY ( Pyhton 3.9 + )
+
+import zoneinfo
+from zoneinfo import ZoneInfo
+from datetime import datetime, timezone
+import dateutil
+import pytz
+
+for tz in zoneinfo.available_timezones():
+    print(tz)
+
+
+# %%
+for tz in pytz.all_timezones:
+    print(tz)
+
+# %%
+dt_utc_naive = datetime.now()
+dt_utc_aware = pytz.utc.localize(dt_utc_naive)
+
+print(f'TZ Naive: {dt_utc_naive}\nTZ Aware: {dt_utc_aware}')
+
+dt_lux_aware = dt_utc_aware.astimezone(pytz.timezone("Europe/Luxembourg"))
+print(f"Lux tz pytz:{dt_lux_aware}")
+
+dt_london_aware = dt_lux_aware.astimezone(ZoneInfo("Europe/London"))
+print(f"LDN tz pytz:{dt_london_aware}")
+
+# %%
+
+
+# %%
